@@ -1,0 +1,109 @@
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #eef4ff;
+}
+
+.register-container {
+  display: flex;
+  width: 900px;
+  height: 600px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-form {
+  flex: 1;
+  padding: 40px;
+}
+
+.register-form h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.register-form p {
+  margin: 10px 0 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.register-form input,
+.register-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.register-form button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Alinhamento dos botões Voltar e Cadastrar */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px; /* Espaço acima dos botões */
+}
+
+.navigation-buttons button {
+  width: 48%;
+}
+
+/* Bolinhas de navegação acima dos botões */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px; /* Espaço acima dos botões */
+}
+
+.carousel-indicators .dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.carousel-indicators .dot.active {
+  background-color: #007bff;
+}
+
+/* Aviso de erro em vermelho */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+/* Informações do lado esquerdo */
+.side-info {
+  flex: 1;
+  background-color: #88AADD;
+  color: #000;
+  padding: 40px 20px; /* Padding lateral reduzido */
+}
+
+/* Parágrafos alinhados e justificados */
+.side-info p {
+  color: #000;
+  text-align: justify;
+}
+/* Parágrafos alinhados e justificados */
+.side-info h1{
+  color: #000;
+  text-align: left;
+}
