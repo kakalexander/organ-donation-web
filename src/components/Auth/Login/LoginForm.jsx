@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { login } from '../../../api/auth';
+import { login } from '../../../services/auth';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -9,12 +9,11 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await login(email, password);
-      console.log('Login bem-sucedido:', response.data);
-      localStorage.setItem('token', response.data.token); // Armazena o token
-      window.location.href = '/dashboard'; // Redireciona após o login
+      const response = await login({ email, password });
+      localStorage.setItem('token', response.token);
+      window.location.href = '/dashboard';
     } catch (err) {
-      setError('E-mail ou senha inválidos. Tente novamente.');
+      setError(err || 'Erro ao fazer login.');
     }
   };
 
@@ -22,22 +21,22 @@ const LoginForm = () => {
     <div className="login-form">
       <h2>Fazer Login</h2>
       <p>Informe suas credenciais para acessar a plataforma</p>
-      {error && <div className="error-message">{error}</div>}
+      {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>E-mail:</label>
         <input
           type="email"
-          placeholder="Digite seu e-mail aqui"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Digite seu e-mail aqui"
           required
         />
         <label>Senha:</label>
         <input
           type="password"
-          placeholder="Digite sua senha aqui"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Digite sua senha aqui"
           required
         />
         <button type="submit">Entrar</button>

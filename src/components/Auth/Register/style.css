@@ -1,0 +1,143 @@
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Garante que ocupe toda a altura da tela */
+  background: #eef4ff;
+  margin: 0; /* Remove margens padrão */
+
+}
+
+.register-container {
+  display: flex;
+  width: 900px;
+  height: auto; /* Ajuste automático da altura */
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden; /* Garante que o conteúdo não extrapole o contêiner */
+}
+
+.register-form {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Alinha ao topo */
+  align-items: center; /* Centraliza horizontalmente */
+  gap: 20px; /* Espaçamento entre os elementos */
+}
+
+.register-form h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  text-align: center; /* Centraliza o texto */
+  margin-bottom: 10px; /* Espaço menor abaixo do título */
+}
+
+.register-form p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center; /* Centraliza o subtítulo */
+}
+
+.register-form input,
+.register-form select {
+  width: 100%;
+  max-width: 400px; /* Limita a largura máxima */
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.register-form button {
+  width: 100%;
+  max-width: 200px; /* Limita a largura máxima */
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Alinhamento dos botões de navegação */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px; /* Alinha os botões dentro da largura limitada */
+}
+
+.navigation-buttons button {
+  width: 48%;
+}
+
+/* Bolinhas de navegação acima dos botões */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* Espaçamento entre as bolinhas */
+  margin-top: 10px;
+  margin-bottom: 10px; /* Espaço menor acima dos botões */
+}
+
+.carousel-indicators .dot {
+  height: 10px;
+  width: 10px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-indicators .dot.active {
+  background-color: #007bff;
+}
+
+/* Estilo para os erros */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Estilo do lado esquerdo (SideInfo) */
+.side-info {
+  flex: 1;
+  background: #88AADD;
+  color: #000;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Alinha o conteúdo à esquerda */
+}
+
+.side-info h1 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000;
+}
+
+.side-info p {
+  font-size: 14px;
+  text-align: justify;
+  color: #000;
+}
+
+.side-buttons button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}

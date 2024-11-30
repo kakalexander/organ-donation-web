@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Header = () => (
-  <header className="header">
-    <h1>Bem-vindo, Admin</h1>
-    <button className="logout-btn">Sair</button>
+const Header = ({ userName, onLogout }) => (
+  <header>
+    <h1>Bem-vindo, {userName}</h1>
+    <button onClick={onLogout}>Sair</button>
   </header>
 );
 
