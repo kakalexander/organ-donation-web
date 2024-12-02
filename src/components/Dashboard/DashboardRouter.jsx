@@ -1,7 +1,7 @@
 import React from 'react';
-import AdminDashboard from './AdminDashboard';
-import ReceptorDashboard from './ReceptorDashboard';
-import DoadorDashboard from './DoadorDashboard';
+import AdminDashboard from './AdminDashboard/AdminDashboard';
+import ReceptorDashboard from './ReceptorDashboard/ReceptorDashboard';
+import DoadorDashboard from './DoardorDashboard/DoadorDashboard';
 
 const DashboardRouter = ({ userType }) => {
   if (userType === 'Admin') return <AdminDashboard />;

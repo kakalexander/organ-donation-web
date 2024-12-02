@@ -7,16 +7,14 @@ const api = axios.create({
   },
 });
 
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
+// Adiciona o token automaticamente a cada requisição
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+  }
+  return config;
+});
 
 api.interceptors.response.use(
   (response) => response,

@@ -9,15 +9,16 @@ const authService = {
     try {
       const response = await api.post('/login', credentials);
       const { token } = response.data;
-
+  
       if (token) {
-        localStorage.setItem('token', token); // Salva o token no localStorage
+        localStorage.setItem('token', token);
       }
-
+  
       return response.data;
     } catch (error) {
       throw error.response?.data?.message || 'Erro ao fazer login.';
     }
+  
   },
 
   // Método de registro

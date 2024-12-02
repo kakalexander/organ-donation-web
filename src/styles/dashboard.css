@@ -1,0 +1,79 @@
+.dashboard-container {
+    padding: 20px;
+    background-color: #eef4ff;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .dashboard-actions a {
+    margin-left: 15px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .dashboard-actions .logout-button {
+    color: red;
+  }
+  
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .dashboard-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-metrics {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+  }
+  
+  .metric-box {
+    flex: 1;
+    background: #f0f8ff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  .metric-box h3 {
+    margin: 5px 0 0;
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .orgao-list, .user-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .orgao-list li, .user-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .hospital-graph {
+    height: 200px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
