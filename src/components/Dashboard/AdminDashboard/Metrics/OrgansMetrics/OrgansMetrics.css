@@ -1,0 +1,60 @@
+/* Estilo do container principal */
+.metrics-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    
+  }
+  
+  /* Lista de órgãos */
+  .organs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 400px; /* Ajuste a altura máxima */
+    overflow-y: auto; /* Permite rolagem vertical */
+    padding-right: 10px; /* Espaçamento interno para evitar sobreposição de bordas */
+  }
+  
+  .organ-item {
+    background-color: #f0f4ff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .organ-item strong {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .organ-item p {
+    font-size: 12px;
+    margin: 5px 0;
+  }
+  
+  .organ-item small {
+    font-size: 10px;
+    color: #666;
+  }
+  
+  /* Botão de adicionar órgão */
+  .card-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .add-organ-button {
+    background: none;
+    border: none;
+    color: #0088ff;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .add-organ-button:hover {
+    text-decoration: underline;
+  }
+  

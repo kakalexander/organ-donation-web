@@ -1,0 +1,16 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Foto de Perfil">
+<g clip-path="url(#clip0_33_14)">
+<rect width="60" height="60" rx="30" fill="#0088FF"/>
+<g id="&#195;&#141;cone">
+<path d="M11 53C11 46.3726 16.3726 41 23 41H37C43.6274 41 49 46.3726 49 53C49 59.6274 43.6274 65 37 65H23C16.3726 65 11 59.6274 11 53Z" fill="#88AADD"/>
+<path d="M18 29C18 22.3726 23.3726 17 30 17C36.6274 17 42 22.3726 42 29C42 35.6274 36.6274 41 30 41C23.3726 41 18 35.6274 18 29Z" fill="#DDEEFF"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_33_14">
+<rect width="60" height="60" rx="30" fill="white"/>
+</clipPath>
+</defs>
+</svg>

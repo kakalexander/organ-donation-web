@@ -1,10 +1,16 @@
+body {
+  font-family: 'roboto', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 .header {
+    font-family: 'roboto', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #007bff;
+    background-color: #ffffff;
+    border-radius: 10px;
     padding: 10px 20px;
-    color: #fff;
+    color: #000000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .header-left {
@@ -21,15 +27,20 @@
   
   .welcome-text {
     font-size: 18px;
+    font-weight: bold;
   }
   
   .header-right a {
     margin-left: 20px;
-    color: #fff;
+    color: #000000;
     text-decoration: none;
   }
   
   .header-right a:hover {
     text-decoration: underline;
   }
-  
+
+.logout-icon {
+  margin-left: 10px;
+  width: 20px;
+}

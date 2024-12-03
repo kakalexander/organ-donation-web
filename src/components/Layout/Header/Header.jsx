@@ -22,7 +22,7 @@ const Header = () => {
     <header className="header">
       <div className="header-left">
         <img
-          src="/path-to-profile-image.jpg" // Substituir com o caminho real da imagem do perfil
+          src="/images/Foto de Perfil.svg" // Substituir com o caminho real da imagem do perfil
           alt="Profile"
           className="profile-image"
         />
@@ -31,8 +31,9 @@ const Header = () => {
       <div className="header-right">
         <a href="/about">Saiba mais</a>
         <a href="/help">Ajuda</a>
-        <a href="/logout">
-          Sair <i className="logout-icon">🔒</i>
+        <a href="/logout" className="logout-button">
+          Sair
+          <img src="/images/sair-icon.svg" alt="Logout" className="logout-icon" />
         </a>
       </div>
     </header>

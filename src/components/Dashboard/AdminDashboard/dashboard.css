@@ -1,45 +1,64 @@
-/* Layout Principal */
 .admin-dashboard {
   font-family: 'Inter', sans-serif;
-  background-color: #f8f9fa;
+  background-color: #DDEEFF;
   padding: 20px;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh; /* Limita a altura */
+  overflow: hidden; /* Desabilita o scroll */
+}
+
+.dashboard-container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: calc(100% - 60px);
+}
+
+.organs-metrics {
+  flex: 1;
+  height: 91%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: white; /* Opcional: Adicione um fundo */
+  padding: 20px; /* Opcional: Controle o espaçamento interno */
+  border-radius: 16px; /* Opcional: Adicione bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: Adicione sombra */
+}
+
+.right-section {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Linha de cards */
-.dashboard-row {
+
+.hospital-content {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
-/* Card de Hospital */
-.hospital-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
+.hospital-left {
   flex: 1;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hospital-right {
+  flex: 2;
+  display: flex;
   align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.hospital-metrics {
-  flex: 1;
+  justify-content: center;
 }
 
 .hospital-graph {
-  flex: 2;
-}
-
-/* Estilo do gráfico */
-.hospital-graph canvas {
-  max-width: 100%;
+  width: 100%;
   height: auto;
 }
