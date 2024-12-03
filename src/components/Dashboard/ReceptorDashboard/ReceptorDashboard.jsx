@@ -1,13 +1,14 @@
 import React from 'react';
-import SolicitarOrgaoForm from './SolicitarOrgaoForm';
-import OrgansSolicitadosList from './OrgansSolicitadosList';
+import RequestOrgan from './RequestOrgan';
+import Header from '../../Layout/Header/Header';
+import './receptorDashboard.css';
 
 const ReceptorDashboard = () => {
   return (
-    <div className="dashboard-container">
+    <div className="receptor-dashboard">
+      <Header />
       <div className="dashboard-content">
-        <SolicitarOrgaoForm />
-        <OrgansSolicitadosList />
+        <RequestOrgan />
       </div>
     </div>
   );

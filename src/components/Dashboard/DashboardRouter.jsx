@@ -1,12 +1,15 @@
 import React from 'react';
 import AdminDashboard from './AdminDashboard/AdminDashboard';
-import ReceptorDashboard from './ReceptorDashboard/ReceptorDashboard';
-import DoadorDashboard from './DoardorDashboard/DoadorDashboard';
+import ReceptorDashboard from '../Dashboard/ReceptorDashboard/ReceptorDashboard';
+import DoadorDashboard from '../Dashboard/DoardorDashboard/DoadorDashboard';
 
-const DashboardRouter = ({ userType }) => {
-  if (userType === 'Admin') return <AdminDashboard />;
-  if (userType === 'Receptor') return <ReceptorDashboard />;
-  if (userType === 'Doador') return <DoadorDashboard />;
+const DashboardRouter = () => {
+  const userType = localStorage.getItem('user_type'); 
+
+  if (userType === 'admin') return <AdminDashboard />;
+  if (userType === 'receptor') return <ReceptorDashboard />;
+  if (userType === 'doador') return <DoadorDashboard />;
+  
   return <p>Usuário não reconhecido. Verifique seu perfil.</p>;
 };
 

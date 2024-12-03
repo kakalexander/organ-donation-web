@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import { login } from '../../../services/auth';
+import { useLoading } from '../../../context/LoadingContext';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const { setLoading } = useLoading(); // Controle de carregamento
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Ativa o spinner
     try {
       const response = await login({ email, password });
       localStorage.setItem('token', response.token);
       window.location.href = '/dashboard';
     } catch (err) {
       setError(err || 'Erro ao fazer login.');
+    } finally {
+      setLoading(false); // Desativa o spinner
     }
   };
 
@@ -41,7 +46,9 @@ const LoginForm = () => {
         />
         <button type="submit">Entrar</button>
       </form>
-      <a href="/recover" className="recover-link">Problemas com o acesso?</a>
+      <a href="/recover" className="recover-link">
+        Problemas com o acesso?
+      </a>
     </div>
   );
 };

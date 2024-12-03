@@ -1,0 +1,45 @@
+/* Layout Principal */
+.admin-dashboard {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Linha de cards */
+.dashboard-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Card de Hospital */
+.hospital-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hospital-metrics {
+  flex: 1;
+}
+
+.hospital-graph {
+  flex: 2;
+}
+
+/* Estilo do gráfico */
+.hospital-graph canvas {
+  max-width: 100%;
+  height: auto;
+}

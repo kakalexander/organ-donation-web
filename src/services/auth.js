@@ -8,17 +8,17 @@ const authService = {
   async login(credentials) {
     try {
       const response = await api.post('/login', credentials);
-      const { token } = response.data;
-  
+      const { token, user } = response.data;
+
       if (token) {
         localStorage.setItem('token', token);
+        localStorage.setItem('user_type', user.tipo_cadastro);
       }
-  
+
       return response.data;
     } catch (error) {
       throw error.response?.data?.message || 'Erro ao fazer login.';
     }
-  
   },
 
   // Método de registro

@@ -3,20 +3,19 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import LoginForm from './pages/Auth/Login/Login';
 import RegisterForm from './pages/Auth/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
+import LoadingSpinner from './components/common/LoadingSpinner';
+import { useLoading } from './context/LoadingContext';
 
 function App() {
   const userProfile = parseInt(localStorage.getItem('user_profile'), 10); // Converte para número
+  const { isLoading } = useLoading(); // Estado global de carregamento
 
   return (
     <Router>
+      {isLoading && <LoadingSpinner />} {/* Mostra carregamento global */}
       <Routes>
-        {/* Rota de login */}
         <Route path="/login" element={<LoginForm />} />
-
-        {/* Rota de registro */}
         <Route path="/register" element={<RegisterForm />} />
-
-        {/* Rota de dashboard baseada no perfil do usuário */}
         <Route
           path="/dashboard"
           element={
@@ -31,8 +30,6 @@ function App() {
             )
           }
         />
-
-        {/* Rota padrão (redireciona para login) */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
