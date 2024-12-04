@@ -1,7 +1,7 @@
 import React from 'react';
-import './Style.css';
+import '../style.css';
 
-const ErrorModal = ({ isOpen, title, message, onClose }) => {
+const SuccessModal = ({ isOpen, title, message, onClose }) => {
   if (!isOpen) return null;
 
   return (
@@ -9,10 +9,12 @@ const ErrorModal = ({ isOpen, title, message, onClose }) => {
       <div className="modal">
         <h2>{title}</h2>
         <p>{message}</p>
-        <button onClick={onClose}>Fechar</button>
+        <button onClick={onClose} className="close-button">
+          Fechar
+        </button>
       </div>
     </div>
   );
 };
 
-export default ErrorModal;
+export default SuccessModal;

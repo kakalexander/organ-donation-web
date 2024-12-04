@@ -6,6 +6,11 @@ export const fetchOrganList = async () => {
 };
 
 export const createOrgan = async (organData) => {
-  const response = await api.post('/orgaos', organData);
-  return response.data;
+  try {
+    const response = await api.post('/orgaos', organData);
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao cadastrar órgão:', error);
+    throw error;
+  }
 };

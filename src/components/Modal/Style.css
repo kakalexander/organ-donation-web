@@ -1,4 +1,4 @@
-.modal-overlay {
+ .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -28,16 +28,63 @@
   .modal p {
     margin-bottom: 20px;
     font-size: 16px;
-    color: #666;
+    color: #000000;
   }
   
-  .modal button {
-    padding: 10px 20px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+} */
   
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+}
+  
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+.close-button {
+  background: none;
+  color: #797979;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.close-button:hover {
+  text-decoration: underline;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%; /* Garante que os elementos respeitem o tamanho do modal */
+  max-width: 480px; /* Limita o tamanho máximo */
+  margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.modal-body label {
+  text-align: left; /* Alinha os títulos à esquerda */
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}

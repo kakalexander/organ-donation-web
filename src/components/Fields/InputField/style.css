@@ -1,0 +1,20 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.input-field label {
+  text-align: left;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input-field input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}

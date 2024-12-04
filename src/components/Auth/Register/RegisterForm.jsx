@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { register } from '../../../services/auth';
 import { BloodTypes, UserTypes } from '../../../utils/enum/enum';
-import SucessModal from '../../../components/Modal/SuccessModal';
-import ErrorModal from '../../../components/Modal/ErrorModal';
+import SucessModal from '../../../components/Modal/Sucess/SuccessModal';
+import ErrorModal from '../../../components/Modal/Error/ErrorModal';
 import '../../../components/Auth/Register/style.css';
 
 const RegisterForm = () => {

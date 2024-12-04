@@ -58,3 +58,9 @@
     text-decoration: underline;
   }
   
+.organ-metric-box {
+  width: 100%;
+  background-color: #f0f4ff;
+  max-width: 300px; 
+  padding: 20px;
+}

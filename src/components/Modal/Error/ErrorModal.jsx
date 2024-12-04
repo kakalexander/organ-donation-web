@@ -1,7 +1,7 @@
 import React from 'react';
-import './Style.css';
+import '../style.css';
 
-const SucessModal = ({ isOpen, title, message, onClose }) => {
+const ErrorModal = ({ isOpen, title, message, onClose }) => {
   if (!isOpen) return null;
 
   return (
@@ -15,4 +15,4 @@ const SucessModal = ({ isOpen, title, message, onClose }) => {
   );
 };
 
-export default SucessModal;
+export default ErrorModal;

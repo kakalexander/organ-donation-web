@@ -1,0 +1,48 @@
+/* Estilos padrão para o botão */
+.button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Hover e foco */
+  .button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Botão desabilitado */
+  .button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+  
+  /* Estilos adicionais para variantes */
+  .button.primary {
+    background-color: #007bff;
+  }
+  
+  .button.secondary {
+    background-color: #6c757d;
+  }
+  
+  .button.danger {
+    background-color: #dc3545;
+  }
+  
+  .button.success {
+    background-color: #28a745;
+  }
+  
