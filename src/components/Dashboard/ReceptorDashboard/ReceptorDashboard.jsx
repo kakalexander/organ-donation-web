@@ -5,10 +5,12 @@ import './receptorDashboard.css';
 
 const ReceptorDashboard = () => {
   return (
-    <div className="receptor-dashboard">
+    <div>
       <Header />
-      <div className="dashboard-content">
-        <RequestOrgan />
+      <div className="receptor-dashboard">
+        <div className="dashboard-content">
+          <RequestOrgan />
+        </div>
       </div>
     </div>
   );

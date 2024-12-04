@@ -12,7 +12,7 @@ const authService = {
 
       if (token) {
         localStorage.setItem('token', token);
-        localStorage.setItem('user_type', user.tipo_cadastro);
+        localStorage.setItem('tipo_cadastro', user.tipo_cadastro);
       }
 
       return response.data;

@@ -1,0 +1,32 @@
+.donor-dashboard {
+  padding: 20px;
+  background-color: #f5faff;
+}
+
+.dashboard-content {
+  display: flex;
+  gap: 20px;
+}
+
+.donate-organ-form,
+.thank-you-message,
+.donated-organs {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.donate-organ-form {
+  width: 5000px;
+}
+
+.thank-you-message,
+.donated-organs {
+  flex: 1;
+}
+.donated-organs {
+  width: 650px;
+  height: 550px;
+  margin-top: 10px;
+}

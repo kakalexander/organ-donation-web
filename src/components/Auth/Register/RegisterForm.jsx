@@ -13,7 +13,7 @@ const RegisterForm = () => {
     blood_type: '',
     password: '',
     confirmPassword: '',
-    userType: '',
+    tipo_cadastro: '',
   });
   const [step, setStep] = useState(1); // Controle das etapas
   const [errorModalOpen, setErrorModalOpen] = useState(false);
@@ -153,8 +153,8 @@ const RegisterForm = () => {
                   required
                 />
                 <select
-                  name="userType"
-                  value={formData.userType}
+                  name="tipo_cadastro"
+                  value={formData.tipo_cadastro}
                   onChange={handleChange}
                   required
                 >
