@@ -4,18 +4,14 @@ import MetricBox from '../../MetricBox';
 import './DashboardMetrics.css';
 import Modal from '../../../Modal/Modal';
 import UserForm from '../../../../pages/User/UserForm';
-import { createUser } from '../../../../services/userService';
 
-const DashboardMetrics = ({ data, title }) => {
+const DashboardMetrics = ({ data, title, onUpdate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleAddUser = async (userData) => {
-    try {
-      await createUser(userData);
-      alert('Usuário cadastrado com sucesso!');
-      setIsModalOpen(false);
-    } catch (error) {
-      alert('Erro ao cadastrar usuário.');
+  const handleSuccess = () => {
+    setIsModalOpen(false); // Fecha o modal
+    if (onUpdate) {
+      onUpdate(); // Atualiza os dados no AdminDashboard
     }
   };
 
@@ -56,7 +52,8 @@ const DashboardMetrics = ({ data, title }) => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       >
-        <UserForm onSubmit={handleAddUser} />
+        {/* Passa o handleSuccess como onSuccess para o UserForm */}
+        <UserForm onSuccess={handleSuccess} />
       </Modal>
     </>
   );

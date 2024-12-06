@@ -3,17 +3,14 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import LoginForm from './pages/Auth/Login/Login';
 import RegisterForm from './pages/Auth/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
-import { useLoading } from './context/LoadingContext';
 import LoadingSpinner from './components/common/LoadingSpinner';
 
 function App() {
-    const { isLoading } = useLoading();
-
     const userProfile = parseInt(localStorage.getItem('user_profile'), 10);
 
     return (
         <>
-            {isLoading && <LoadingSpinner />}
+            <LoadingSpinner />
             <Router>
                 <Routes>
                     <Route path="/login" element={<LoginForm />} />

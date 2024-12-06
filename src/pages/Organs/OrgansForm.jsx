@@ -3,9 +3,10 @@ import organService from '../../services/organService';
 import SelectField from '../../components/Fields/SelectField/SelectField';
 import InputField from '../../components/Fields/InputField/InputField';
 import Button from '../../components/Button/Button';
+import { useLoading } from '../../context/LoadingContext';
 import { BloodTypes, OrganTypes, Genders } from '../../utils/enum/enum';
 
-const OrgansForm = ({ onSuccess, onError, onClose }) => {
+const OrgansForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     nome_doador: '',
     nome: '',
@@ -15,6 +16,8 @@ const OrgansForm = ({ onSuccess, onError, onClose }) => {
     sexo: '',
   });
 
+  const { showLoading, hideLoading } = useLoading();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -22,21 +25,18 @@ const OrgansForm = ({ onSuccess, onError, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    showLoading();
     try {
-      await organService.createOrganForUser(formData);
-      setFormData({
-        nome_doador: '',
-        nome: '',
-        descricao: '',
-        tipo: '',
-        blood_type: '',
-        sexo: '',
-      });
-      if (onSuccess) onSuccess('Órgão cadastrado com sucesso!');
-      if (onClose) onClose(); // Fecha o modal de cadastro após sucesso
+      const createdOrgan = await organService.createOrganForUser(formData);
+      alert('Órgão cadastrado com sucesso!');
+      if (onSuccess) {
+        onSuccess(createdOrgan); // Notifica o componente pai sobre o sucesso
+      }
     } catch (error) {
       console.error('Erro ao cadastrar órgão:', error);
-      if (onError) onError('Erro ao cadastrar órgão. Por favor, tente novamente.');
+      alert('Erro ao cadastrar órgão. Por favor, tente novamente.');
+    } finally {
+      hideLoading();
     }
   };
 

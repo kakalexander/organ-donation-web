@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import InputField from '../../components/Fields/InputField/InputField';
 import SelectField from '../../components/Fields/SelectField/SelectField';
 import Button from '../../components/Button/Button';
-import { BloodTypes, UserTypesAdmin } from '../../utils/enum/enum'; // Importa os enums
+import { BloodTypes, UserTypesAdmin } from '../../utils/enum/enum'; 
 import { createUser } from '../../services/userService';
+import { useLoading } from '../../context/LoadingContext';
 
 const UserForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -16,6 +17,8 @@ const UserForm = ({ onSuccess }) => {
     blood_type: '',
   });
 
+  const { showLoading, hideLoading } = useLoading();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -23,13 +26,17 @@ const UserForm = ({ onSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    showLoading();
     try {
-      await createUser(formData);
+      const createdUser = await createUser(formData);
       alert('Usuário cadastrado com sucesso!');
-      onSuccess(); // Fecha o modal ou atualiza a lista
+      if (onSuccess) {
+        onSuccess(createdUser); 
+      }
     } catch (error) {
       alert('Erro ao cadastrar usuário. Por favor, tente novamente.');
+    } finally {
+      hideLoading();
     }
   };
 
@@ -61,7 +68,7 @@ const UserForm = ({ onSuccess }) => {
       <SelectField
         label="Tipo de Cadastro"
         name="tipo_cadastro"
-        options={UserTypesAdmin} // Utiliza o enum
+        options={UserTypesAdmin}
         value={formData.tipo_cadastro}
         onChange={handleChange}
       />

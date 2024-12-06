@@ -12,32 +12,20 @@ import './dashboard.css';
 const AdminDashboard = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const fetchData = useCallback(async (newOrgan = null) => {
-    setIsRefreshing(true);
+  const fetchData = useCallback(async () => {
     try {
       const response = await fetchDashboardData();
-      const updatedData = response.data;
-
-      // Adiciona o novo órgão diretamente no estado
-      if (newOrgan) {
-        updatedData.orgaos.detalhes.unshift(newOrgan);
-        updatedData.orgaos.total += 1;
-      }
-
-      setData(updatedData);
+      setData(response.data);
     } catch (err) {
       console.error('Erro ao buscar dados:', err);
       setError('Erro ao carregar os dados.');
-    } finally {
-      setIsRefreshing(false);
     }
-  }, []); // Lista vazia porque não usamos variáveis externas dinâmicas
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]); // fetchData como dependência
+  }, [fetchData]);
 
   if (error) return <div className="error-message">{error}</div>;
   if (!data) return <div className="loading"><Loading /></div>;
