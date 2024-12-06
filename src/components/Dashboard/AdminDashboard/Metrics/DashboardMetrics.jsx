@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Incluído o useState
+import React, { useState } from 'react';
 import Card from '../Card/Card';
 import MetricBox from '../../MetricBox';
 import './DashboardMetrics.css';
@@ -11,7 +11,7 @@ const DashboardMetrics = ({ data, title }) => {
 
   const handleAddUser = async (userData) => {
     try {
-      await createUser(userData); // Chama o serviço para cadastro
+      await createUser(userData);
       alert('Usuário cadastrado com sucesso!');
       setIsModalOpen(false);
     } catch (error) {
@@ -26,34 +26,26 @@ const DashboardMetrics = ({ data, title }) => {
           <div className="card-header-content">
             {title}
             <button className="add-user-button" onClick={() => setIsModalOpen(true)}>
-                Cadastrar Usuário
-              </button>
+              Cadastrar Usuário
+            </button>
           </div>
         }
       >
         <div className="metrics-row">
           <div className="metrics-left">
-            <MetricBox title="Total" value={`${data.total || 0} cadastrados`} />
-            <MetricBox title="Online (-24h)" value={`${data.online || 0} ativos`} />
+            <MetricBox title="Total" value={`${data?.total || 0} cadastrados`} />
+            <MetricBox title="Online (-24h)" value={`${data?.ativos_24h || 0} ativos`} />
           </div>
           <div className="metrics-right">
             <div className="recent-user">
               <strong>Último cadastro doador:</strong>
-              <p>
-                {data.ultimoDoador?.nome || 'N/A'} ({data.ultimoDoador?.tipo || ''}) |{' '}
-                {data.ultimoDoador?.genero || ''}
-              </p>
-              <small>{data.ultimoDoador?.tempo || 'N/A'}</small>
-            </div>
-            <div className="recent-user">
-              <strong>Último cadastro doador:</strong>
-              <p>{data.ultimoDoador?.nome || 'N/A'}</p>
-              <small>{data.ultimoDoador?.tempo || 'N/A'}</small>
+              <p>{data?.ultimo_doador?.name || 'N/A'}</p>
+              <small>{new Date(data?.ultimo_doador?.created_at || '').toLocaleString()}</small>
             </div>
             <div className="recent-user">
               <strong>Último cadastro receptor:</strong>
-              <p>{data.ultimoReceptor?.nome || 'N/A'}</p>
-              <small>{data.ultimoReceptor?.tempo || 'N/A'}</small>
+              <p>{data?.ultimo_receptor?.name || 'N/A'}</p>
+              <small>{new Date(data?.ultimo_receptor?.created_at || '').toLocaleString()}</small>
             </div>
           </div>
         </div>

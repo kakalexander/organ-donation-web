@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import organService from '../../services/organService';
 import SelectField from '../../components/Fields/SelectField/SelectField';
 import InputField from '../../components/Fields/InputField/InputField';
 import Button from '../../components/Button/Button';
 import { BloodTypes, OrganTypes, Genders } from '../../utils/enum/enum';
-import { createOrgan } from '../../services/organService';
 
-const OrgansForm = ({ userType }) => {
+const OrgansForm = ({ onSuccess, onError, onClose }) => {
   const [formData, setFormData] = useState({
     nome_doador: '',
     nome: '',
@@ -22,16 +22,8 @@ const OrgansForm = ({ userType }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const isFormValid = Object.values(formData).every((value) => value.trim() !== '');
-    if (!isFormValid) {
-      alert('Preencha todos os campos obrigatórios!');
-      return;
-    }
-
     try {
-      await createOrgan(formData); // Envia os dados ao serviço
-      alert('Órgão cadastrado com sucesso!');
+      await organService.createOrganForUser(formData);
       setFormData({
         nome_doador: '',
         nome: '',
@@ -40,9 +32,11 @@ const OrgansForm = ({ userType }) => {
         blood_type: '',
         sexo: '',
       });
+      if (onSuccess) onSuccess('Órgão cadastrado com sucesso!');
+      if (onClose) onClose(); // Fecha o modal de cadastro após sucesso
     } catch (error) {
       console.error('Erro ao cadastrar órgão:', error);
-      alert('Erro ao cadastrar órgão. Por favor, tente novamente.');
+      if (onError) onError('Erro ao cadastrar órgão. Por favor, tente novamente.');
     }
   };
 
@@ -93,7 +87,7 @@ const OrgansForm = ({ userType }) => {
         onChange={handleChange}
         name="sexo"
       />
-      <Button type="submit" label={userType === 'receptor' ? 'Solicitar' : 'Cadastrar'} />
+      <Button type="submit" label="Cadastrar" />
     </form>
   );
 };

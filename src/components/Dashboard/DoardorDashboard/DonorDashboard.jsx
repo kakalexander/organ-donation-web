@@ -3,18 +3,18 @@ import Header from '../../Layout/Header/Header';
 import DonateOrganForm from './DonateOrganForm';
 import ThankYouMessage from './ThankYouMessage';
 import DonatedOrgans from './DonatedOrgans';
-import { fetchDonatedOrgans } from '../../../services/organService';
+import doadorService from '../../../services/doadorService';
 import './donorDashboard.css';
 
 const DonorDashboard = () => {
   const [donatedOrgans, setDonatedOrgans] = useState([]);
-  const [userName, setUserName] = useState('Usuário'); // Nome do usuário (inicializado como placeholder)
-  const [showThankYou, setShowThankYou] = useState(false); // Controle da exibição da mensagem de agradecimento
+  const [userName, setUserName] = useState('Usuário'); // Nome do usuário
+  const [showThankYou, setShowThankYou] = useState(false);
 
   useEffect(() => {
     const loadDonatedOrgans = async () => {
       try {
-        const organs = await fetchDonatedOrgans();
+        const organs = await doadorService.fetchOrgans();
         setDonatedOrgans(organs);
       } catch (err) {
         console.error('Erro ao carregar órgãos doados:', err);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createSolicitation, fetchSolicitations } from '../../../services/receptorService';
+import receptorService from '../../../services/receptorService';
 import { BloodTypes, Genders } from '../../../utils/enum/enum';
 import SuccessModal from '../../Modal/Sucess/SuccessModal';
 import InputField from '../../Fields/InputField/InputField';
@@ -15,6 +15,7 @@ const RequestOrgan = () => {
     sexo: '',
     telefone: '',
     endereco: '',
+    status: '',
   });
   const [solicitations, setSolicitations] = useState([]);
   const [error, setError] = useState(null);
@@ -23,7 +24,7 @@ const RequestOrgan = () => {
   useEffect(() => {
     const loadSolicitations = async () => {
       try {
-        const fetchedSolicitations = await fetchSolicitations();
+        const fetchedSolicitations = await receptorService.fetchSolicitations();
         setSolicitations(fetchedSolicitations);
       } catch (err) {
         console.error('Erro ao carregar solicitações:', err);
@@ -41,9 +42,9 @@ const RequestOrgan = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newSolicitation = await createSolicitation(formData);
+      const newSolicitation = await receptorService.createSolicitation(formData);
       setSolicitations((prev) => [...prev, newSolicitation]);
-      setModalOpen(true); // Abre o modal de sucesso
+      setModalOpen(true);
       setFormData({
         nome: '',
         prazo: '',
@@ -52,6 +53,7 @@ const RequestOrgan = () => {
         sexo: '',
         telefone: '',
         endereco: '',
+        status: '',
       });
     } catch (err) {
       setError('Erro ao criar a solicitação. Por favor, tente novamente.');
@@ -125,26 +127,28 @@ const RequestOrgan = () => {
             <input type="checkbox" required /> Concordo com os{' '}
             <a href="/terms">termos e condições</a>.
           </div>
-          <button type="submit">Solicitar</button>
+          <button className='button' type="submit">Solicitar</button>
         </form>
       </div>
       <div className="solicitations-list">
         <h2>Órgãos Solicitados</h2>
-        {solicitations.length === 0 ? (
-          <p>Nenhum órgão solicitado ainda.</p>
-        ) : (
-          solicitations.map((solicitation) => (
-            <div key={solicitation.id} className="solicitation-card">
-              <h3>{solicitation.nome}</h3>
-              <p>Tipo sanguíneo: {solicitation.blood_type}</p>
-              <p>Sexo: {solicitation.sexo}</p>
-              <p>Telefone: {solicitation.telefone}</p>
-              <p>Endereço: {solicitation.endereco}</p>
-              <p>Criado em: {new Date(solicitation.created_at).toLocaleString()}</p>
-              <p>Prazo: {solicitation.prazo}</p>
-            </div>
-          ))
-        )}
+        <div className="solicitation-scroll">
+          {solicitations.length === 0 ? (
+            <p>Nenhum órgão solicitado ainda.</p>
+          ) : (
+            solicitations.map((solicitation) => (
+              <div key={solicitation.id} className="solicitation-card">
+                <h3>{solicitation.nome}</h3>
+                <p>Tipo sanguíneo: {solicitation.blood_type}</p>
+                <p>Sexo: {solicitation.sexo}</p>
+                <p>Telefone: {solicitation.telefone}</p>
+                <p>Endereço: {solicitation.endereco}</p>
+                <p>Criado em: {new Date(solicitation.created_at).toLocaleString()}</p>
+                <p>Prazo: {solicitation.prazo}</p>
+              </div>
+            ))
+          )}
+        </div>
       </div>
 
       {/* Modal de Sucesso */}

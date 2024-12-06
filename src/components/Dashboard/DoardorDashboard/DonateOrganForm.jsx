@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { donateOrgan } from '../../../services/organService';
+import doadorService from '../../../services/doadorService';
 import InputField from '../../Fields/InputField/InputField';
 import SelectField from '../../Fields/SelectField/SelectField';
 import { BloodTypes, OrganTypes, Genders } from '../../../utils/enum/enum';
@@ -23,8 +23,8 @@ const DonateOrganForm = ({ onDonateSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newOrgan = await donateOrgan(formData);
-      onDonateSuccess((prev) => [...prev, newOrgan]); // Atualiza a lista de órgãos e exibe a mensagem de agradecimento
+      const newOrgan = await doadorService.donateOrgan(formData);
+      onDonateSuccess((prev) => [...prev, newOrgan]);
       setFormData({
         nome_doador: '',
         nome: '',
@@ -50,6 +50,7 @@ const DonateOrganForm = ({ onDonateSuccess }) => {
           placeholder="Digite seu nome"
           value={formData.nome_doador}
           onChange={handleChange}
+          validate={true}
         />
         <InputField
           label="Nome do Órgão"
@@ -58,6 +59,7 @@ const DonateOrganForm = ({ onDonateSuccess }) => {
           placeholder="Digite o nome do órgão"
           value={formData.nome}
           onChange={handleChange}
+          validate={true}
         />
         <InputField
           label="Descrição"
@@ -73,6 +75,7 @@ const DonateOrganForm = ({ onDonateSuccess }) => {
           options={OrganTypes}
           value={formData.tipo}
           onChange={handleChange}
+          validate={true}
         />
         <SelectField
           label="Tipo Sanguíneo"
@@ -80,6 +83,7 @@ const DonateOrganForm = ({ onDonateSuccess }) => {
           options={BloodTypes}
           value={formData.blood_type}
           onChange={handleChange}
+          validate={true}
         />
         <SelectField
           label="Sexo"
@@ -87,6 +91,7 @@ const DonateOrganForm = ({ onDonateSuccess }) => {
           options={Genders}
           value={formData.sexo}
           onChange={handleChange}
+          validate={true}
         />
         <div className="terms">
           <input type="checkbox" required /> Declaro que li e confirmo a veracidade das informações contidas no cadastro.

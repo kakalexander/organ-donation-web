@@ -6,19 +6,19 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const { setLoading } = useLoading(); // Controle de carregamento
+  const { showLoading, hideLoading } = useLoading(); // Controle de carregamento
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Ativa o spinner
+    showLoading(); // Ativa o spinner
     try {
       const response = await login({ email, password });
       localStorage.setItem('token', response.token);
       window.location.href = '/dashboard';
     } catch (err) {
-      setError(err || 'Erro ao fazer login.');
+      setError(err?.message || 'Erro ao fazer login.');
     } finally {
-      setLoading(false); // Desativa o spinner
+      hideLoading(); // Desativa o spinner
     }
   };
 

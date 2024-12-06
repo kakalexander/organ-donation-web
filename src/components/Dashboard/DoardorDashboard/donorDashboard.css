@@ -1,6 +1,5 @@
 .donor-dashboard {
   padding: 20px;
-  background-color: #f5faff;
 }
 
 .dashboard-content {
@@ -18,15 +17,64 @@
 }
 
 .donate-organ-form {
-  width: 5000px;
+  width: 1000px;
 }
 
-.thank-you-message,
 .donated-organs {
   flex: 1;
 }
-.donated-organs {
-  width: 650px;
-  height: 550px;
+
+.card-organs {
   margin-top: 10px;
+  width: 800px;
+  height: 550px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(228, 40, 40, 0.1);
+}
+
+.card-organs .organs-list {
+  max-height: 500px; /* Limita a altura do conteúdo */
+  overflow-y: auto; /* Scroll no conteúdo */
+  padding-right: 10px; /* Espaço para a barra de rolagem */
+}
+
+/* Scroll personalizado */
+.card-organs .organs-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-organs .organs-list::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 8px;
+}
+
+.card-organs .organs-list::-webkit-scrollbar-thumb:hover {
+  background: #aaaaaa;
+}
+
+.thank-you-message {
+  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.organs-registers {
+  background-color: #DDEEFF;
+  border-radius: 20px;
+  padding: 0px 1px 5px 20px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .donate-organ-form,
+  .thank-you-message,
+  .card-organs {
+    width: 100%;
+  }
 }

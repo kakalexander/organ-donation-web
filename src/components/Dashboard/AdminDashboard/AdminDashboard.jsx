@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Header from '../../../components/Layout/Header/Header';
 import DashboardMetrics from '../AdminDashboard/Metrics/DashboardMetrics';
 import { fetchDashboardData } from '../../../services/api';
@@ -12,41 +12,58 @@ import './dashboard.css';
 const AdminDashboard = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const fetchData = useCallback(async (newOrgan = null) => {
+    setIsRefreshing(true);
+    try {
+      const response = await fetchDashboardData();
+      const updatedData = response.data;
+
+      // Adiciona o novo órgão diretamente no estado
+      if (newOrgan) {
+        updatedData.orgaos.detalhes.unshift(newOrgan);
+        updatedData.orgaos.total += 1;
+      }
+
+      setData(updatedData);
+    } catch (err) {
+      console.error('Erro ao buscar dados:', err);
+      setError('Erro ao carregar os dados.');
+    } finally {
+      setIsRefreshing(false);
+    }
+  }, []); // Lista vazia porque não usamos variáveis externas dinâmicas
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetchDashboardData();
-        setData(response.data);
-      } catch (err) {
-        console.error('Erro ao buscar dados:', err);
-        setError('Erro ao carregar os dados.');
-      }
-    };
-
     fetchData();
-  }, []);
+  }, [fetchData]); // fetchData como dependência
 
   if (error) return <div className="error-message">{error}</div>;
   if (!data) return <div className="loading"><Loading /></div>;
 
   return (
-    <div> <Header title="Dashboard" />
+    <div>
+      <Header title="Dashboard" />
       <div className="admin-dashboard">
         <div className="dashboard-container">
           <OrgansMetrics
             className="organs-metrics"
             data={{
               total: data.orgaos.total,
-              last24h: data.orgaos.ultimas_24h,
-              last7days: data.orgaos.ultimos_7_dias,
-              organsList: data.orgaos.organsList,
+              ultimas_24h: data.orgaos.ultimas_24h,
+              ultimos_7_dias: data.orgaos.ultimos_7_dias,
+              detalhes: data.orgaos.detalhes,
             }}
-            onAddOrgan={() => console.log('Cadastrar órgão')}
+            onUpdate={fetchData}
           />
           <div className="right-section">
             <div className="right-top-card">
-              <DashboardMetrics data={data.usuarios} title="Usuários cadastrados" />
+              <DashboardMetrics
+                data={data.usuarios}
+                title="Usuários cadastrados"
+                onUpdate={fetchData}
+              />
             </div>
             <Card title="Hospitais cadastrados">
               <div className="hospital-card">
@@ -70,6 +87,6 @@ const AdminDashboard = () => {
       </div>
     </div>
   );
-}
+};
 
 export default AdminDashboard;
