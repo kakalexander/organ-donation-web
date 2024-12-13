@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../../../services/auth';
 import { useLoading } from '../../../context/LoadingContext';
 
@@ -6,26 +7,30 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const { showLoading, hideLoading } = useLoading(); // Controle de carregamento
+  const { showLoading, hideLoading } = useLoading();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    showLoading(); // Ativa o spinner
+    showLoading();
     try {
       const response = await login({ email, password });
+      console.log('Login Response:', response); // Depuração
       localStorage.setItem('token', response.token);
-      window.location.href = '/dashboard';
+      localStorage.setItem('tipo_cadastro', response.user.tipo_cadastro);
+      localStorage.setItem('user_profile', response.user.id_perfil);
+      navigate('/dashboard'); // Redirecionamento correto
     } catch (err) {
+      console.error('Erro ao fazer login:', err); // Depuração
       setError(err?.message || 'Erro ao fazer login.');
     } finally {
-      hideLoading(); // Desativa o spinner
+      hideLoading();
     }
   };
 
   return (
     <div className="login-form">
       <h2>Fazer Login</h2>
-      <p>Informe suas credenciais para acessar a plataforma</p>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>E-mail:</label>
@@ -46,9 +51,6 @@ const LoginForm = () => {
         />
         <button type="submit">Entrar</button>
       </form>
-      <a href="/recover" className="recover-link">
-        Problemas com o acesso?
-      </a>
     </div>
   );
 };
