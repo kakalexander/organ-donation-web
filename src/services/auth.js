@@ -13,6 +13,7 @@ const authService = {
       if (token) {
         localStorage.setItem('token', token);
         localStorage.setItem('tipo_cadastro', user.tipo_cadastro);
+        localStorage.setItem('user_profile', user.id_perfil);
       }
 
       return response.data;
@@ -32,9 +33,6 @@ const authService = {
   },
 };
 
-// Exportação de métodos individuais
 export const login = authService.login.bind(authService);
 export const register = authService.register.bind(authService);
-
-// Exportação padrão do serviço
 export default authService;
