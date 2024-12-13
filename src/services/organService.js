@@ -1,5 +1,4 @@
 import api from './api';
-import { useLoading } from '../context/LoadingContext';
 
 const organService = {
   createOrganForUser: async (data) => {
